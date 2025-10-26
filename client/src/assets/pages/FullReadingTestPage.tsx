@@ -6,11 +6,12 @@ import { useToast } from '../hooks/use-toast';
 import Timer from '../components/Timer';
 import ConfirmDialog from '../components/ConfirmDialog';
 import { me } from '../hooks/use-user';
-import { FaHome, FaBars } from 'react-icons/fa';
+import { FaHome, FaBars, FaAward } from 'react-icons/fa';
 import OptionsModal from '../components/OptionsModal';
 import { Question } from './BaseReadingTestPage';
 import SubmitButton from '../components/SubmitButton';
 import QuestionNavButtons from '../components/QuestionNavButtons';
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction } from '../ui/alert-dialog';
 
 // Cấu trúc dữ liệu cho một phần thi (part)
 interface TestPart {
@@ -44,6 +45,7 @@ const FullReadingTestPage: React.FC = () => {
     // State để lưu câu trả lời cho tất cả các phần, key là part_number
     const [allAnswers, setAllAnswers] = useState<Record<number, Record<string, string | string[] | Record<string, string>>>>({});
     const [openDialog, setOpenDialog] = useState(false);
+    const [showResultDialog, setShowResultDialog] = useState(false);
 
     const { toast } = useToast();
     const currentUserInfo = me();
@@ -81,7 +83,13 @@ const FullReadingTestPage: React.FC = () => {
             const partAnswers = allAnswers[part.part_number] || {};
             const questions = part.questions || [];
             let score = 0;
-            const total = questions.reduce((sum, q) => sum + (Array.isArray(q.answers) ? q.answers.length : 1), 0);
+            // Sửa lại cách tính tổng số câu hỏi cho chính xác
+            const total = questions.reduce((sum, q) => {
+                if (q.type === 'MULTI' && Array.isArray(q.answers)) {
+                    return sum + q.answers.length;
+                }
+                return sum + 1;
+            }, 0);
 
             questions.forEach(q => {
                 const key = String(q.number);
@@ -108,6 +116,7 @@ const FullReadingTestPage: React.FC = () => {
         setTestParts(updatedTestParts);
         setSubmitted(true);
         setOpenDialog(false);
+        setShowResultDialog(true); // Hiển thị dialog kết quả
         toast({ title: "Success", description: "Test submitted successfully!" });
 
         // Logic gửi kết quả tổng hợp lên server
@@ -217,11 +226,25 @@ const FullReadingTestPage: React.FC = () => {
                     ))}
                     <div className="flex-grow flex justify-center">{activeProgressBar}</div>
                 </div>
-                <div className="flex justify-end" style={{ width: '150px' }}>
-                    {!submitted && (
-                        <>
-                            <SubmitButton onClick={() => setOpenDialog(true)} />
-                        </>
+                <div className="flex justify-end items-center" style={{ minWidth: '160px' }}>
+                    {submitted ? (
+                        <button
+                            onClick={() => setShowResultDialog(true)}
+                            className="flex items-center space-x-3 px-3 py-2 border border-gray-200 bg-white rounded-md hover:shadow"
+                            title="View Result"
+                        >
+                            <div className="flex items-center justify-center w-8 h-8 bg-yellow-100 rounded-full">
+                                <FaAward className="text-yellow-500" />
+                            </div>
+                            <div className="text-left">
+                                <div className="text-xs text-gray-500">Full Test</div>
+                                <div className="text-sm font-semibold text-gray-800">
+                                    {testParts.reduce((s, p) => s + (p.score || 0), 0)} / {testParts.reduce((s, p) => s + (p.total || 0), 0)}
+                                </div>
+                            </div>
+                        </button>
+                    ) : (
+                        <SubmitButton onClick={() => setOpenDialog(true)} />
                     )}
                 </div>
             </footer>
@@ -236,6 +259,35 @@ const FullReadingTestPage: React.FC = () => {
                 isOpen={isOptionsOpen}
                 onClose={() => setIsOptionsOpen(false)}
             />
+
+            {/* Dialog hiển thị kết quả */}
+            <AlertDialog open={showResultDialog} onOpenChange={setShowResultDialog}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Test Result</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Here is the summary of your test performance.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <div className="py-4 space-y-4">
+                        <div className="text-center">
+                            <p className="text-lg text-gray-600">Total Score</p>
+                            <p className="text-4xl font-bold text-blue-600">
+                                {testParts.reduce((sum, part) => sum + (part.score || 0), 0)} / {testParts.reduce((sum, part) => sum + (part.total || 0), 0)}
+                            </p>
+                        </div>
+                        {testParts.map(part => (
+                            <div key={part.id} className="flex justify-between items-center p-3 bg-gray-100 rounded-md">
+                                <span className="font-medium">Part {part.part_number} Score:</span>
+                                <span className="font-bold">{part.score || 0} / {part.total || 0}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <AlertDialogFooter>
+                        <AlertDialogAction onClick={() => setShowResultDialog(false)}>Close</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 };
