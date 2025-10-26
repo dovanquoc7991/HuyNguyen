@@ -1,0 +1,142 @@
+.fillblanks-question-row {
+  display: inline;
+  line-height: 1;
+}
+
+
+.fillblanks-input-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fillblanks-input::placeholder {
+  color: #222;
+  font-weight: bold;
+}
+
+.fillblanks-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+}
+
+.fillblanks-input:focus {
+  outline: none;
+  border-color: #2563eb; /* blue-600 */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.fillblanks-input:disabled {
+  background-color: #f3f4f6; /* gray-100 */
+  color: #6b7280; /* gray-500 */
+  cursor: not-allowed;
+}
+
+/* 
+  Đây là phần quan trọng để highlight ô trống,
+  hoạt động cả khi input bị disabled.
+*/
+.fillblanks-input.highlighted,
+.fillblanks-input-wrapper.highlighted .fillblanks-input {
+  border-color: #1d4ed8; /* blue-700 */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+  animation: pulse-blue 1.5s infinite;
+}
+
+/* Animation để tạo hiệu ứng nhấp nháy nhẹ */
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+  }
+}
+
+
+.prose ul>li::marker {
+  color: #222 !important;
+  /* hoặc màu bạn muốn */
+  opacity: 1 !important;
+}
+
+
+.fillblanks-paragraph p {
+  margin-bottom: 1em; /* hoặc 16px */
+  line-height: 1.6;
+}
+
+.fillblanks-paragraph p.MsoNormal {
+  margin-bottom: 1em !important;
+}
+
+
+.fillblanks-paragraph table {
+  width: auto !important;
+  border-collapse: collapse;
+}
+
+.fillblanks-paragraph td, .fillblanks-paragraph th {
+  padding: 0px 2px !important; /* Giảm padding để ảnh và text sát nhau hơn */
+  vertical-align: left;
+}
+
+.fillblanks-paragraph img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  text-align: left;
+}
+
+
+.fillblanks-paragraph p {
+  margin-bottom: 1em;
+  /* hoặc 16px */
+  line-height: 1.6;
+}
+
+.fillblanks-paragraph p.MsoNormal {
+  margin-bottom: 1em !important;
+}
+
+/* ...các css khác... */
+
+/* Cấp 1: dấu chấm đặc (mặc định disc) */
+.fillblanks-paragraph ul,
+.fillblanks-paragraph ul[type="disc"] {
+  list-style-type: disc !important;
+}
+
+/* Cấp 2: ô tròn rỗng */
+.fillblanks-paragraph ul ul,
+.fillblanks-paragraph ul ul[type="circle"] {
+  list-style-type: circle !important;
+}
+
+/* Cấp 3: vuông nhỏ nếu có */
+.fillblanks-paragraph ul ul ul {
+  list-style-type: square !important;
+}
+
+/* Đảm bảo thụt lề đẹp */
+.fillblanks-paragraph ul,
+.fillblanks-paragraph ol {
+  list-style-position: outside !important;
+  margin-left: 1em !important;
+  padding-left: 1.5em !important;
+}
+
+.fillblanks-paragraph ul li,
+.fillblanks-paragraph ol li {
+  display: list-item !important;
+  list-style-position: outside !important;
+  margin-bottom: 0.3em !important;
+  line-height: 1.5;
+}

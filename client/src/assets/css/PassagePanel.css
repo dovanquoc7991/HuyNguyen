@@ -1,0 +1,206 @@
+/* --- Các style cơ bản cho passage và editor --- */
+.tinymce-content, .left-panel, .right-panel {
+  font-family: Tahoma, Arial, sans-serif !important;
+}
+
+.tinymce-content {
+  line-height: 1.6;
+}
+
+.tinymce-content p {
+  margin-bottom: 1em;
+}
+
+
+.tinymce-content ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  padding-left: 1.5em !important;
+  margin-left: 1em !important;
+  margin-bottom: 0.5em !important;
+}
+
+.tinymce-content ul ul {
+  list-style-type: circle !important;
+  margin-left: 1.5em !important;
+}
+
+.tinymce-content ul ul ul {
+  list-style-type: square !important;
+  margin-left: 1.5em !important;
+}
+
+.tinymce-content li {
+  margin-bottom: 0.3em !important;
+  display: list-item !important;
+}
+
+/* --- Style cho vùng được highlight và Ghi chú (Note) --- */
+.highlighted-text {
+  background-color: #fff59d; /* Màu vàng gold cho dễ thấy */
+  cursor: pointer;
+}
+
+.note-wrapper {
+  position: relative;
+  background-color: #fff59d;
+  display: inline;
+  padding: 1px 0;
+}
+
+.note-icon {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  font-size: 10px;
+  color: #2e7d32;
+  background: white;
+  /* padding: 2px; */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  transform: scale(0.6);
+  transition: transform 0.2s;
+}
+
+.note-icon:hover {
+  transform: scale(1.2);
+}
+
+/* --- Popup Toolbar (Context Menu) - ĐÃ CẬP NHẬT --- */
+.popup-toolbar {
+  position: fixed;
+  z-index: 1000;
+  background: #333;
+  border: 1px solid #555;
+  padding: 6px; /* Padding đồng đều */
+  border-radius: 8px; /* Bo góc lớn hơn một chút */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column; /* THAY ĐỔI QUAN TRỌNG: Hiển thị theo cột dọc */
+  gap: 4px; /* Khoảng cách giữa các nút */
+  min-width: 200px; /* Chiều rộng tối thiểu cho menu */
+  margin-top: 70px;
+  margin-bottom: 100px;
+  margin-left: -10px;
+}
+
+.popup-toolbar .popup-btn {
+  width: 100%; /* Nút chiếm toàn bộ chiều rộng của menu */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa icon và text */
+  padding: 8px 12px; /* Tăng padding cho dễ click */
+  border: none;
+  background: #444;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: left; /* Căn chữ về bên trái */
+}
+
+.popup-toolbar .popup-btn:hover:not(:disabled) {
+  background: #5c6bc0; /* Màu tím nhạt khi hover */
+}
+
+.popup-toolbar .popup-btn.danger:hover:not(:disabled) {
+  background: #e53935; /* Màu đỏ cho action nguy hiểm */
+}
+
+.popup-toolbar .popup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.popup-toolbar .popup-btn svg {
+  font-size: 18px;
+}
+
+.popup-toolbar .popup-divider {
+    height: 1px;
+    background-color: #555;
+    border: none;
+    margin: 4px 0;
+}
+
+
+/* --- Popup để ghi chú (Tooltip Note) --- */
+.tooltip-note {
+  position: fixed;
+  top: 40vh;
+  left: 50vw;
+  transform: translateX(-50%); /* Căn giữa màn hình */
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  max-width: 400px;
+  width: 50%;
+  z-index: 1001; /* Cao hơn toolbar */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip-note textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  background: #f9fafb;
+  transition: border-color 0.2s;
+  margin-bottom: 12px;
+}
+
+.tooltip-note textarea:focus {
+  outline: none;
+  border-color: #5c6bc0;
+  box-shadow: 0 0 0 2px rgba(92, 107, 192, 0.2);
+}
+
+.note-action-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.note-action-btn {
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.note-action-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.note-action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.note-action-btn.danger {
+  background-color: #fce8e6;
+  border-color: #f4a9a2;
+  color: #c5221f;
+}
+
+.note-action-btn.danger:hover:not(:disabled) {
+  background-color: #f8d7d4;
+  color: #a50e0b;
+}

@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 10%, 20%);
+  --muted: hsl(150, 12%, 96%);
+  --muted-foreground: hsl(210, 6%, 40%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 10%, 20%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 10%, 20%);
+  --border: hsl(150, 8%, 90%);
+  --input: hsl(150, 8%, 90%);
+  --primary: hsl(122, 39%, 49%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(150, 12%, 96%);
+  --secondary-foreground: hsl(210, 10%, 20%);
+  --accent: hsl(150, 12%, 96%);
+  --accent-foreground: hsl(210, 10%, 20%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(122, 39%, 49%);
+  --radius: 0.75rem;
+
+  /* Custom IELTS theme colors */
+  --primary-green: hsl(122, 39%, 49%);
+  --green-medium: hsl(122, 39%, 59%);
+  --green-light: hsl(122, 39%, 95%);
+  --green-subtle: hsl(122, 30%, 80%);
+  --neutral-bg: hsl(0, 0%, 98%);
+  --text-primary: hsl(210, 10%, 20%);
+  --text-secondary: hsl(210, 6%, 40%);
+}
+
+.dark {
+  --background: hsl(210, 20%, 8%);
+  --foreground: hsl(0, 0%, 95%);
+  --muted: hsl(210, 20%, 12%);
+  --muted-foreground: hsl(210, 5%, 60%);
+  --popover: hsl(210, 20%, 8%);
+  --popover-foreground: hsl(0, 0%, 95%);
+  --card: hsl(210, 20%, 8%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --border: hsl(210, 20%, 15%);
+  --input: hsl(210, 20%, 15%);
+  --primary: hsl(122, 39%, 49%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 20%, 12%);
+  --secondary-foreground: hsl(0, 0%, 95%);
+  --accent: hsl(210, 20%, 12%);
+  --accent-foreground: hsl(0, 0%, 95%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(0, 0%, 95%);
+  --ring: hsl(122, 39%, 49%);
+
+  /* Custom IELTS theme colors for dark mode */
+  --primary-green: hsl(122, 39%, 49%);
+  --green-medium: hsl(122, 39%, 59%);
+  --green-light: hsl(122, 39%, 15%);
+  --green-subtle: hsl(122, 30%, 25%);
+  --neutral-bg: hsl(210, 20%, 8%);
+  --text-primary: hsl(0, 0%, 95%);
+  --text-secondary: hsl(210, 5%, 60%);
+}
+
+
+.yellow-on-black {
+  --background: hsl(210, 20%, 8%);
+  --foreground: hsl(54, 90%, 60%);
+  /* << Màu chữ chính là màu Vàng */
+  --muted: hsl(210, 20%, 12%);
+  --muted-foreground: hsl(54, 40%, 70%);
+  /* Vàng nhạt hơn */
+  --popover: hsl(210, 20%, 8%);
+  --popover-foreground: hsl(54, 90%, 60%);
+  --card: hsl(210, 20%, 8%);
+  --card-foreground: hsl(54, 90%, 60%);
+  --border: hsl(210, 20%, 15%);
+  --input: hsl(210, 20%, 15%);
+  --primary: hsl(122, 39%, 49%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 20%, 12%);
+  --secondary-foreground: hsl(54, 90%, 60%);
+  --accent: hsl(210, 20%, 12%);
+  --accent-foreground: hsl(54, 90%, 60%);
+  --destructive: hsl(0, 62%, 30%);
+  --destructive-foreground: hsl(54, 90%, 60%);
+  --ring: hsl(122, 39%, 49%);
+
+  --text-primary: hsl(54, 90%, 60%);
+  /* << Màu chữ chính */
+  --text-secondary: hsl(54, 40%, 70%);
+  /* Màu chữ phụ */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-family: Arial, sans-serif;
+    background-color: var(--background) !important;
+    color: var(--text-primary);
+  }
+
+  body.text-large {
+    font-size: 1.15em;
+  }
+
+  body.text-extra-large {
+    font-size: 1.25em;
+  }
+
+  .dark .tinymce-content span,
+  .dark .tinymce-content p,
+  .dark .tinymce-content div {
+    color: var(--text-primary) !important;
+    background-color: transparent !important;
+    /* Đảm bảo nền trong suốt */
+  }
+
+  .yellow-on-black .tinymce-content span,
+  .yellow-on-black .tinymce-content p,
+  .yellow-on-black .tinymce-content div {
+    color: var(--text-primary) !important;
+    background-color: transparent !important;
+  }
+
+
+  .main-container span,
+  .main-container p,
+  .main-container th,
+  .main-container td,
+  .main-container div {
+    font-size: 16px !important;
+  }
+  .main-container .tinymce-content h3 {
+    font-size: 20.8px !important;
+  }
+
+  .listening-main-container span,
+  .listening-main-container p,
+  .listening-main-container th,
+  .listening-main-container td,
+  .listening-main-container div {
+    font-size: 16px !important;
+  }
+  .listening-main-container .tinymce-content h3 {
+    font-size: 20.8px !important;
+  }
+
+
+
+
+  /* Ghi đè kích thước chữ */
+  .text-large .main-container span,
+  .text-large .main-container p,
+  .text-large .main-container th,
+  .text-large .main-container td,
+  .text-large .main-container div {
+    font-size: 19px !important;
+  }
+  .text-large .main-container .tinymce-content h3 {
+    font-size: 24.7px !important;
+  }
+
+  .text-large .listening-main-container span,
+  .text-large .listening-main-container p,
+  .text-large .listening-main-container th,
+  .text-large .listening-main-container td,
+  .text-large .listening-main-container div {
+    font-size: 19px !important;
+  }
+  .text-large .listening-main-container .tinymce-content h3 {
+    font-size: 24.7px !important;
+  }
+
+
+  .text-extra-large .main-container span,
+  .text-extra-large .main-container p,
+  .text-extra-large .main-container th,
+  .text-extra-large .main-container td,
+  .text-extra-large .main-container div {
+    font-size: 22px !important;
+  }
+  .text-extra-large .main-container .tinymce-content h3 {
+    font-size: 28.6px !important;
+  }
+
+  .text-extra-large .listening-main-container span,
+  .text-extra-large .listening-main-container p,
+  .text-extra-large .listening-main-container th,
+  .text-extra-large .listening-main-container td,
+  .text-extra-large .listening-main-container div {
+    font-size: 22px !important;
+  }
+  .text-extra-large .listening-main-container .tinymce-content  h3 {
+    font-size: 28.6px !important;
+  }
+}
+
+@layer utilities {
+  .bg-primary-green {
+    background-color: var(--primary-green);
+  }
+
+  .bg-green-medium {
+    background-color: var(--green-medium);
+  }
+
+  .bg-green-light {
+    background-color: var(--green-light);
+  }
+
+  .bg-green-subtle {
+    background-color: var(--green-subtle);
+  }
+
+  .bg-neutral-bg {
+    background-color: var(--neutral-bg);
+  }
+
+  .text-primary-green {
+    color: var(--primary-green);
+  }
+
+  .text-green-medium {
+    color: var(--green-medium);
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .border-primary-green {
+    border-color: var(--primary-green);
+  }
+}
+
+@layer components {
+  .material-shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .material-shadow-lg {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-link {
+    @apply flex items-center px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors;
+  }
+
+  .sidebar-link.active {
+    @apply text-blue-600 bg-blue-50 font-medium;
+  }
+
+  .question-type-badge {
+    @apply px-2 py-1 text-xs font-medium rounded;
+  }
+
+  .question-type-badge.fill-blanks {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .question-type-badge.tfng {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .question-type-badge.mcq {
+    @apply bg-purple-100 text-purple-800;
+  }
+
+  .question-type-badge.multi {
+    @apply bg-orange-100 text-orange-800;
+  }
+
+  .question-type-badge.match-table {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .question-type-badge.drag-drop {
+    @apply bg-indigo-100 text-indigo-800;
+  }
+}

@@ -1,0 +1,103 @@
+#result {
+  background: #f4faff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0002;
+  padding: 28px 24px 20px 24px;
+  margin: 24px 0;
+  border: 1.5px solid #b3e5fc;
+  max-width: 700px;
+}
+
+#result h4 {
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+#result table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fafdff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px #0001;
+  border: 1px solid #b3e5fc;
+}
+
+#result th,
+#result td {
+  padding: 12px 10px;
+  border: 1px solid #b3e5fc;
+  text-align: center;
+  font-size: 1rem;
+}
+
+#result th {
+  background: #e3f2fd;
+  font-weight: 600;
+  color: #1976d2;
+  letter-spacing: 0.5px;
+}
+
+#result tr {
+  transition: background 0.2s;
+}
+
+#result tr:nth-child(even) {
+  background: #f1f8ff;
+}
+
+#result tr:nth-child(odd) {
+  background: #e3f2fd;
+}
+
+#result td {
+  vertical-align: middle;
+}
+
+#result .fa-check-circle {
+  color: #43a047 !important;
+  font-size: 1.3em;
+}
+
+#result .fa-times-circle {
+  color: #e53935 !important;
+  font-size: 1.3em;
+}
+
+#result .correct {
+  color: #43a047;
+  font-weight: 500;
+}
+
+#result .wrong {
+  color: #e53935;
+  font-weight: 500;
+}
+
+#result .answer {
+  color: #1976d2;
+  font-weight: 500;
+}
+
+#result p {
+  margin-top: 18px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #1976d2;
+}
+
+.status-cell {
+  text-align: center;
+  vertical-align: middle;
+  height: 48px;
+}
+
+.status-cell svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+}

@@ -1,0 +1,206 @@
+.audio-player {
+  background: #b0b0b0;
+  padding: 4px 6px;
+  border-radius: 8px;
+  font-size: 8px;
+  display: flex;
+  flex-direction: column;
+  /* mobile sẽ xếp dọc */
+  gap: 6px;
+  max-width: 100%;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* nếu hẹp sẽ xuống hàng */
+}
+
+.progress-bar {
+  flex: 1;
+  margin: 0 4px;
+  accent-color: #5aa8ff;
+  height: 4px;
+  min-width: 60px;
+}
+
+.time {
+  font-weight: bold;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  /* để các nút xuống hàng khi hẹp */
+  align-items: center;
+  gap: 8px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.volume-control input[type="range"] {
+  width: 60px;
+  accent-color: #5aa8ff;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.speed-control select {
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.play-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #5aa8ff; /* xanh nổi bật */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.play-btn:hover {
+  background-color: #3498db; /* xanh đậm hơn khi hover */
+}
+
+/* Responsive tablet */
+@media (max-width: 768px) {
+  .controls {
+    justify-content: center;
+  }
+
+  .progress-container {
+    justify-content: center;
+  }
+
+  .volume-control input[type="range"] {
+    width: 40px;
+    accent-color: #5aa8ff;
+  }
+  
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {
+  .audio-player {
+    font-size: 11px;
+  }
+
+  .progress-bar {
+    width: 100%;
+    margin: 4px 0;
+  }
+
+  .volume-control input[type="range"] {
+    width: 40px;
+  }
+
+  .controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .controls button {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+}
+
+
+.audio-player {
+  background: transparent;   /* bỏ nền riêng */
+  color: #ecf0f1;            /* đổi chữ sáng */
+  padding: 4px 6px;
+}
+
+.progress-bar {
+  accent-color: #5aa8ff;     /* giữ màu xanh nổi bật */
+}
+
+.controls button {
+  color: #ecf0f1;            /* icon & text màu sáng */
+}
+
+.audio-player {
+  background: rgba(44, 62, 80, 0.9); /* xanh đen trong suốt, tiệp header */
+  color: #ecf0f1;                   /* chữ sáng */
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.progress-bar {
+  accent-color: #5aa8ff;  /* xanh sáng nổi bật */
+}
+
+.controls button {
+  color: #ecf0f1;         /* icon & chữ sáng */
+}
+
+
+.speed-control select {
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: #2c3e50; /* nền tối */
+  color: #ecf0f1;           /* chữ sáng */
+  border: 1px solid #5aa8ff;
+  appearance: none;         /* bỏ style mặc định */
+  cursor: pointer;
+}
+
+.speed-control select:focus {
+  outline: none;
+  border-color: #3498db;    /* viền sáng khi focus */
+}
+
+
+
+.audio-player {
+  background: #34495e;   /* xanh navy nhạt hơn chút để phân biệt */
+  color: #ecf0f1;        /* chữ sáng */
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+.progress-bar {
+  accent-color: #3498db; /* xanh sáng đồng bộ viền menu */
+}
+
+.controls button {
+  color: #ecf0f1;
+}
+
+.play-btn {
+  background-color: #3498db; /* nút play xanh nổi bật */
+  color: #fff;
+}

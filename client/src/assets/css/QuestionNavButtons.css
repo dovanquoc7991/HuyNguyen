@@ -1,0 +1,27 @@
+.fixed-nav {
+  position: absolute;
+  top: -70px;
+  right: 40px;
+  z-index: 2000;
+  display: flex;
+  gap: 8px; /* Thay thế gap-2 từ Tailwind bằng giá trị cụ thể */
+}
+
+.nav-button {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  overflow: visible; /* Đảm bảo icon không bị cắt */
+}
+
+.nav-button svg {
+  width: 24px; /* Kích thước cố định cho icon */
+  height: 24px; /* Kích thước cố định cho icon */
+  z-index: 9999;
+}

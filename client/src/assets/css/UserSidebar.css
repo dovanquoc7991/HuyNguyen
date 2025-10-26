@@ -1,0 +1,179 @@
+/* Sidebar responsive */
+@media (max-width: 800px) {
+  .sidebar, .left-panel, .your-sidebar-class {
+    min-width: 0 !important;
+    width: 56px !important; /* hoặc 0 nếu muốn ẩn hoàn toàn */
+    overflow-x: hidden;
+    padding: 0 !important;
+  }
+  .sidebar .sidebar-content, .left-panel .sidebar-content {
+    display: none;
+  }
+  /* Nếu có nút mở sidebar, hãy hiển thị nút này */
+}
+
+/* Main content full width */
+/* Responsive cho phần lọc, tìm kiếm, sort */
+@media (max-width: 800px) {
+  .p-8 {
+    padding: 8px !important;
+  }
+  .space-y-8 > * {
+    margin-bottom: 18px !important;
+  }
+  .flex.md\:flex-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .md\:ml-auto {
+    margin-left: 0 !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* Responsive cho danh sách card bài test */
+@media (max-width: 800px) {
+  .flex.flex-wrap.gap-4 {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .w-\[260px\] {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+
+
+
+/* Smooth transitions for sidebar */
+aside {
+  transition: width 0.3s ease;
+}
+
+/* Ensure main content adjusts properly */
+.main-content {
+  transition: margin-left 0.3s ease;
+}
+
+/* Hide text with animation */
+.sidebar-text {
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+/* Tooltip for collapsed icons */
+.tooltip {
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 8px;
+  z-index: 40;
+}
+
+
+/* Tooltip styles for collapsed sidebar */
+aside .relative:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-left: 8px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Smooth hover effects */
+aside .transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Improve button visibility */
+aside button {
+  transition: all 0.2s ease;
+}
+
+aside button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Ẩn sidebar hoàn toàn trên mobile nếu cần */
+@media (max-width: 767px) {
+  .mobile-sidebar {
+    width: 70px !important; /* Hoặc kích thước phù hợp cho icon */
+    transform: translateX(0);
+  }
+  
+  /* Đảm bảo nội dung chính không bị che */
+  .main-content {
+    margin-left: 70px !important;
+  }
+  
+  /* Ẩn nút toggle trên mobile */
+  .mobile-sidebar button {
+    display: none;
+  }
+}
+
+/* Trên tablet nhỏ (768px - 1024px) */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  .mobile-sidebar {
+    width: 80px !important;
+  }
+  
+  .main-content {
+    margin-left: 80px !important;
+  }
+} */
+
+/* Tooltip cho mobile */
+.mobile-sidebar .relative:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-left: 10px;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Cải thiện trải nghiệm touch trên mobile */
+.mobile-sidebar div {
+  padding: 16px 12px !important;
+}
+
+.mobile-sidebar svg {
+  width: 28px;
+  height: 28px;
+}

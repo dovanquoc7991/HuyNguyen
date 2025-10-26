@@ -1,0 +1,160 @@
+.confirm-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Backdrop mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2147483647;
+}
+
+.confirm-dialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 40vw;
+  text-align: center;
+  position: relative;
+  position: fixed;
+  z-index: 2147483647;
+}
+
+.confirm-dialog-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: yellow;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333333;
+  border-radius: 10px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-dialog-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333333;
+}
+
+.confirm-dialog-message {
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.confirm-dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.confirm-btn {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn.submit {
+  background-color: #ffeb3b; /* Màu vàng cho "Submit Now" */
+}
+
+.confirm-btn.cancel {
+  background-color: #ffeb3b; /* Màu vàng cho "Check again" */
+}
+
+.confirm-btn:hover {
+  background-color: #fdd835; /* Màu vàng đậm hơn khi hover */
+}
+
+
+
+.confirm-dialog {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 40vw;
+  max-width: 500px; /* Prevent it from being too big on large screens */
+  min-width: 300px; /* Prevent it from being too small */
+  text-align: center;
+  position: relative;
+  z-index: 2147483647;
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+  .confirm-dialog {
+    width: 90vw; /* Full width on phones */
+    padding: 15px;
+  }
+  .confirm-dialog-title {
+    font-size: 18px;
+  }
+  .confirm-dialog-message {
+    font-size: 14px;
+  }
+  .confirm-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Small tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .confirm-dialog {
+    width: 70vw;
+    padding: 18px;
+  }
+  .confirm-dialog-title {
+    font-size: 20px;
+  }
+  .confirm-dialog-message {
+    font-size: 15px;
+  }
+}
+
+/* Large screens (bigger than 1200px) */
+@media (min-width: 1200px) {
+  .confirm-dialog {
+    width: 30vw;
+  }
+}
+
+
+.confirm-dialog-close {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  background: transparent; /* Không nền */
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666; /* Màu xám dịu */
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.confirm-dialog-close:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Nền xám nhạt khi hover */
+  color: #000; /* Màu đậm hơn khi hover */
+}

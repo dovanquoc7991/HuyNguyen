@@ -1,0 +1,40 @@
+@media (max-width: 600px) {
+  footer {
+    padding: 0 4px !important;
+  }
+  footer .flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+  }
+  footer .flex > div {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    margin-bottom: 2px;
+  }
+  .footer .text-sm {
+    font-size: 0.95em;
+  }
+  .footer .bg-primary-green {
+    width: 100% !important;
+    margin-top: 6px;
+    font-size: 1em;
+    padding: 10px 0;
+  }
+  /* Giảm chiều cao nút và bo góc */
+  .footer .bg-primary-green,
+  .footer button,
+  footer .bg-primary-green,
+  footer button {
+    min-width: 0 !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    padding: 10px 0 !important;
+    font-size: 1em !important;
+  }
+  /* Ẩn Need help và Contact Support trên màn hình nhỏ */
+  .footer .footer-support,
+  footer .footer-support {
+    display: none !important;
+  }
+}

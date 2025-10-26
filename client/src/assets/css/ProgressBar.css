@@ -1,0 +1,166 @@
+/* ========== Footer Progress Bar ========== */
+#progress-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    align-items: center;
+}
+
+.qprogress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 7px;
+}
+
+.square {
+    width: 22px;
+    height: 22px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 2px solid #d1d5db;
+    margin-bottom: 2px;
+    transition: border 0.2s, background 0.2s;
+    box-sizing: border-box;
+}
+
+.qnum:hover {
+    border: 2px solid #2563eb;
+}
+
+.qnum {
+    font-size: 0.95em;
+    color: #333;
+    font-weight: 500;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    padding: 1px;
+}
+
+
+.qnum-highlight {
+    border: 1px solid #4400ff;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+.qnum-normal {
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* Desktop trung bình */
+@media (max-width: 1200px) {
+    .square {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Tablet ngang / Laptop nhỏ */
+@media (max-width: 992px) {
+    .square {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+}
+
+/* Mobile lớn / Phablet */
+@media (max-width: 576px) {
+    .square {
+        width: 16px;
+        height: 16px;
+    }
+
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {}
+
+/* Mobile nhỏ */
+@media (max-width: 320px) {}
+
+
+
+
+/* ========== Footer Progress Bar ========== */
+#progress-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.square {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 2px solid #d1d5db;
+    transition: border 0.2s, background 0.2s;
+    box-sizing: border-box;
+
+    /* Căn số giữa ô */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+}
+
+.square:hover {
+    border-color: #2563eb;
+}
+
+/* Highlight state */
+.square.highlight {
+    border-color: #2563eb;
+    background-color: #dbeafe;
+    color: #1e3a8a;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .square {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .square {
+        width: 22px;
+        height: 22px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .square {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+    }
+}

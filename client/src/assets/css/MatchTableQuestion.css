@@ -1,0 +1,59 @@
+.match-table {
+  width: auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 8px;
+  overflow: hidden;
+  padding-right: 15px;
+  table-layout: auto;
+  min-width: 400px;
+}
+
+.match-table th,
+.match-table td {
+  border: 1px solid #d1d5db;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.match-table th {
+  background: #f3f4f6;
+  font-weight: 600;
+  color: #222;
+}
+
+.match-table tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.match-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  background: #f9fafb;
+}
+
+.match-table input[type="radio"] {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.qnum-highlight {
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+.qnum-normal{
+    border: 1px solid #fafbfc;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: bold;
+}
+
+.match-cell:hover {
+  background: #e3f2fd;
+  transition: background 0.15s;
+}
+

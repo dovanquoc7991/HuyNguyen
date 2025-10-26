@@ -1,0 +1,110 @@
+.question-instruction {
+  margin-top: 25px;
+  max-width: 700px;
+}
+
+.question-instruction:first-child {
+  margin-top: 0px;
+}
+
+
+.question .options {
+  margin-left: 8px;
+}
+
+/* Allow images to respect inline styles but not overflow their container */
+.tinymce-content img {
+  max-width: 100%;
+  height: auto !important;
+  /* Maintain aspect ratio */
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+/* start */
+
+.tinymce-content p[align="center"] {
+  text-align: center;
+}
+
+.tinymce-content p[align="center"] img {
+  display: inline;
+}
+
+/* them code de fix loi image not align bai Termite Mounds */
+.tinymce-content p[align="center"] img,
+.tinymce-content p[style*="text-align:center"] img,
+.tinymce-content p[style*="text-align: center"] span img,
+.tinymce-content p[style*="text-align: center"] strong img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+
+
+/* 
+end
+*/
+
+.listening-app .tinymce-content img,
+.reading-app .tinymce-content img {
+  max-height: 60vh !important;
+}
+
+.tinymce-content p {
+  margin-bottom: 1em;
+  /* hoặc 16px */
+  line-height: 1.6;
+}
+
+.tinymce-content p.MsoNormal {
+  margin-bottom: 1em !important;
+}
+
+/* Đảm bảo mọi li trong ul/ol đều là list-item và có dấu chấm */
+.tinymce-content ul,
+.tinymce-content ol {
+  list-style-position: outside !important;
+  margin-left: 2em !important;
+  padding-left: 1.5em !important;
+}
+
+.tinymce-content ul li,
+.tinymce-content ol li,
+.tinymce-content li.MsoNormal {
+  display: list-item !important;
+  list-style-type: inherit !important;
+  list-style-position: outside !important;
+  margin-bottom: 0.3em !important;
+  line-height: 1.5;
+}
+
+/* Nếu ul có type, ép lại kiểu dấu chấm */
+.tinymce-content ul[type="circle"] li {
+  list-style-type: circle !important;
+}
+
+.tinymce-content ul[type="disc"] li {
+  list-style-type: disc !important;
+}
+
+.tinymce-content ul[type="square"] li {
+  list-style-type: square !important;
+}
+
+/* Nếu bị inline style list-style-type:none thì ép lại */
+.tinymce-content ul[style*="list-style-type: none"],
+.tinymce-content ol[style*="list-style-type: none"] {
+  list-style-type: disc !important;
+}
+
+.tinymce-content li[style*="list-style-type: none"] {
+  list-style-type: disc !important;
+}
+
+/* Nếu bị display:block thì ép lại */
+.tinymce-content ul li,
+.tinymce-content ol li {
+  display: list-item !important;
+}
