@@ -38,6 +38,17 @@ const FullReadingTestPage: React.FC = () => {
     const [activePartIndex, setActivePartIndex] = useState(0); // State để theo dõi tab đang hoạt động
     const [highlightedQ, setHighlightedQ] = useState<number | string | null>(1);
 
+    // Khi chuyển part, đặt lại highlightedQ về câu đầu của part mới (nếu đã load questions)
+    useEffect(() => {
+        const qs = testParts[activePartIndex]?.questions;
+        if (qs && qs.length) {
+            setHighlightedQ(qs[0].number ?? 1);
+        } else {
+            // Nếu chưa có questions, tạm set về 1 hoặc số câu hỏi bắt đầu của part đó
+            setHighlightedQ(1);
+        }
+    }, [activePartIndex, testParts]);
+
     // State chung cho toàn bộ bài thi
     const [totalTime, setTotalTime] = useState(60 * 60); // Mặc định 60 phút, sẽ được cập nhật từ API
     const [timeLeft, setTimeLeft] = useState(totalTime);
@@ -169,35 +180,33 @@ const FullReadingTestPage: React.FC = () => {
 
             <div className="p-0 md:p-0" style={{ paddingBottom: '60px' }}> {/* Add padding to avoid content being hidden by the fixed footer */}
                 {/* Tab Content */}
-                {testParts.map((part, index) => (
-                    <div key={part.id} style={{ display: activePartIndex === index ? 'block' : 'none' }}>
-                        <BaseReadingTestPage
-                            skill="Reading"
-                            part={`part${part.part_number}`}
-                            id={part.id}
-                            submitted={submitted}
-                            highlightedQ={highlightedQ}
-                            answers={allAnswers[part.part_number] || {}}
-                            onAnswersChange={(newAnswers) => handleAnswersChange(part.part_number, newAnswers)}
-                            idPrefix={`part${part.part_number}`}
-                            onQuestionsLoad={(questions) => {
-                                // Lưu danh sách câu hỏi vào state của FullReadingTestPage
-                                setTestParts(prevParts => prevParts.map(p =>
-                                    p.id === part.id ? { ...p, questions } : p
-                                ));
-                            }}
-                            renderFooter={(progressBar, setQ) => {
-                                // When this part is active, we lift its progress bar up to the state
-                                if (activePartIndex === index) {
-                                    // Use a timeout to avoid React state update loop warning
+                {testParts.map((part, index) =>
+                    // Chỉ render component của part đang active
+                    activePartIndex === index ? (
+                        <div key={part.id}>
+                            <BaseReadingTestPage
+                                skill="Reading"
+                                part={`part${part.part_number}`}
+                                id={part.id}
+                                submitted={submitted}
+                                highlightedQ={highlightedQ}
+                                answers={allAnswers[part.part_number] || {}}
+                                onAnswersChange={(newAnswers) => handleAnswersChange(part.part_number, newAnswers)}
+                                idPrefix={`part${part.part_number}`}
+                                onQuestionsLoad={(questions) => {
+                                    setTestParts(currentParts =>
+                                        currentParts.map(p =>
+                                            p.id === part.id ? { ...p, questions } : p
+                                        ));
+                                }}
+                                renderFooter={(progressBar) => {
                                     setTimeout(() => setActiveProgressBar(progressBar), 0);
-                                }
-                                // This part's footer is now controlled by the parent, so we render nothing here.
-                                return null;
-                            }}
-                        />
-                    </div>
-                ))}
+                                    return null;
+                                }}
+                            />
+                        </div>
+                    ) : null
+                )}
             </div>
 
             {/* Shared Footer */}
