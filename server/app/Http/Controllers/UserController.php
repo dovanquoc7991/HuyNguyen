@@ -21,6 +21,12 @@ class UserController extends Controller
             return response()->json(['message' => 'Bạn không có quyền thực hiện hành động này.'], 403);
         }
 
+        // Tự động cập nhật trạng thái của người dùng đã hết hạn
+        User::where('status', 'active')
+            ->whereNotNull('expires_at')
+            ->where('expires_at', '<', now())
+            ->update(['status' => 'disabled']);
+
         $users = User::all();
 
         return response()->json($users);
