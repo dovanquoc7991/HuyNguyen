@@ -24,7 +24,7 @@ const postFormSchema = z.object({
 type PostFormData = z.infer<typeof postFormSchema>;
 
 export default function CreatePostPage() {
-  const [, params] = useRoute("/admin/create-post/:id");
+  const [, params] = useRoute("/admin/create-stories/:id");
   const postId = params?.id ? parseInt(params.id) : null;
   const isEditing = !!postId;
   const { toast } = useToast();
@@ -70,14 +70,14 @@ export default function CreatePostPage() {
       queryClient.invalidateQueries({ queryKey: ["posts"] });
       toast({
         title: "Success",
-        description: "Post created successfully",
+        description: "Story created successfully",
       });
       form.reset();
     },
     onError: (error: any) => {
       toast({
         title: "Error",
-        description: error.message || "Failed to create post",
+        description: error.message || "Failed to create story",
         variant: "destructive",
       });
     },
@@ -91,13 +91,13 @@ export default function CreatePostPage() {
       queryClient.invalidateQueries({ queryKey: ["post", postId] });
       toast({
         title: "Success",
-        description: "Post updated successfully",
+        description: "Story updated successfully",
       });
     },
     onError: (error: any) => {
       toast({
         title: "Error",
-        description: error.message || "Failed to update post",
+        description: error.message || "Failed to update story",
         variant: "destructive",
       });
     },
@@ -120,10 +120,10 @@ export default function CreatePostPage() {
       <header className="bg-white shadow-sm border-b border-gray-200 px-8 py-6">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">
-            {isEditing ? "Edit Post" : "Create New Post"}
+            {isEditing ? "Edit Post" : "Create New Stories"}
           </h2>
           <p className="text-gray-600 mt-1">
-            {isEditing ? "Modify the existing post." : "Create a new Reading or Listening post for your students."}
+            {isEditing ? "Modify the existing story." : "Create a new Reading or Listening stories."}
           </p>
         </div>
       </header>
@@ -135,27 +135,27 @@ export default function CreatePostPage() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <i className="fas fa-info-circle text-blue-600 mr-3"></i>
-                  Post Details
+                  Stories Details
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 {isLoadingPost && isEditing ? (
-                  <p>Loading post data...</p>
+                  <p>Loading stories data...</p>
                 ) : (
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" autoComplete="off">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block font-medium mb-1">Post Title</label>
+                          <label className="block font-medium mb-1">Story Title</label>
                           <Input
                             type="text"
                             {...form.register("title")}
-                            placeholder="Enter a title for the post..."
+                            placeholder="Enter a title for the story..."
                             required
                           />
                         </div>
                         <div>
-                          <label className="block font-medium mb-1">Post Type</label>
+                          <label className="block font-medium mb-1">Story Type</label>
                           <Select
                             value={form.watch("type")}
                             onValueChange={(value: "reading" | "listening") => form.setValue("type", value)}
@@ -195,7 +195,7 @@ export default function CreatePostPage() {
                       )}
 
                       <div>
-                        <label className="block font-medium mb-1">Post Content</label>
+                        <label className="block font-medium mb-1">Story Content</label>
                         <Editor
                           tinymceScriptSrc="../../../tinymce/tinymce.min.js"
                           value={form.watch("content")}
@@ -205,7 +205,7 @@ export default function CreatePostPage() {
                       </div>
 
                       <Button type="submit" className={`${isEditing ? "bg-blue-600 hover:bg-blue-700" : "bg-green-600 hover:bg-green-700"} text-white font-semibold px-6 py-2 rounded transition`} disabled={createPostMutation.isPending || updatePostMutation.isPending}>
-                        {isEditing ? (updatePostMutation.isPending ? "Updating..." : "Update Post") : (createPostMutation.isPending ? "Publishing..." : "Publish Post")}
+                        {isEditing ? (updatePostMutation.isPending ? "Updating..." : "Update story") : (createPostMutation.isPending ? "Publishing..." : "Publish Story")}
                       </Button>
                     </form>
                   </Form>

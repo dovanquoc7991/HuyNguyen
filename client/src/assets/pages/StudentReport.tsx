@@ -155,8 +155,8 @@ export default function StudentReport() {
 
   return (
     <PracticeListLayout
-      pageTitle="Student Posts"
-      pageDescription="Review posts for Reading and Listening."
+      pageTitle="Short Stories"
+      pageDescription="Review stories for Reading and Listening."
       items={sortedItems}
       isLoading={isLoading}
       searchProps={{ value: search, onChange: (e) => setSearch(e.target.value), placeholder: "Search reports..." }}
@@ -164,13 +164,13 @@ export default function StudentReport() {
       filterNode={filterNode}
       renderContent={renderContent}
       noItemsFoundText={{
-        title: "No posts found",
+        title: "No stories found",
         description: "No posts available for this skill",
         searchDescription: "Try a different search term"
       }}
       selectItemText={{
-        title: "Select a Post",
-        description: "Choose a post from the list to view its content."
+        title: "Select a story",
+        description: "Choose a story from the list to view its content."
       }}
     />
   );

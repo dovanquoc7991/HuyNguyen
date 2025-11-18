@@ -152,7 +152,7 @@ function PublicAdminPage() {
       <Route path="/admin/create-speaking-test/:id" component={CreateSpeakingTest} />
       <Route path="/admin/create-writing-test/:id" component={CreateWritingTest} />
       <Route path="/admin/users" component={UserListPage} />
-      <Route path="/admin/create-post" component={CreatePostPage} />
+      <Route path="/admin/create-stories" component={CreatePostPage} />
       <Route path="/admin/create-post/:id" component={CreatePostPage} />
       <Route path="/admin/posts" component={PostListPage} />
       <Route path="/admin/feedback" component={FeedbackListPage} />

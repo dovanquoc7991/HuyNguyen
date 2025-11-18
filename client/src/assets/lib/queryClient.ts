@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { navigate } from "wouter/use-browser-location";
 
 export const TOKEN_KEY = 'auth_token';
 const DOMAIN_URL = 'https://huy-nguyen-ielts.com';
@@ -40,7 +41,7 @@ export async function apiRequest(
 
   const res = await fetch(DOMAIN_URL + url, {
     method,
-    credentials: 'include',
+    credentials: 'omit',
     headers: header,
     body: data ? JSON.stringify(data) : undefined,
   });
@@ -58,8 +59,19 @@ export async function apiRequest(
   }
 
   if (!res.ok) {
+    if (res.status === 401 || res.status === 403 || res.status === 500) {
+      // Token hết hạn → logout
+      sessionStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(TOKEN_KEY);
+      // Thay vì điều hướng trực tiếp, chúng ta tải lại trang.
+      // Điều này sẽ buộc ứng dụng React khởi động lại,
+      // useAuth hook sẽ thấy không có token và tự động hiển thị PublicApp (trang login).
+      // Đây là cách đơn giản và đáng tin cậy nhất để đảm bảo trạng thái được làm mới hoàn toàn.
+      window.location.href = '/login';
+    }
     throw new Error(result?.message || result || 'Server error');
   }
+
 
   return result;
 }

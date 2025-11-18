@@ -13,12 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->statefulApi();
-        // Thêm middleware kiểm tra trạng thái người dùng vào group 'api'
-        $middleware->appendToGroup('api', \App\Http\Middleware\CheckUserStatus::class);
-
         $middleware->alias([
             'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
             'ability'  => \Laravel\Sanctum\Http\Middleware\CheckForAnyAbility::class,
+            'check.token.expiry' => \App\Http\Middleware\CheckTokenExpiry::class,
         ]);
     })
 

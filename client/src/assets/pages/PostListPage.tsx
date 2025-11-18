@@ -26,24 +26,24 @@ const POST_TYPES: Post['type'][] = ['reading', 'listening'];
 
 const POST_TYPE_CONFIG = {
   reading: {
-    title: "Reading Posts",
+    title: "Shore stories",
     Icon: FaFileAlt,
     colorClasses: {
       bg: "bg-blue-100",
       text: "text-blue-600",
     },
-    createLink: "/admin/create-post",
-    editLink: "/admin/create-post", // Thêm link edit
+    createLink: "/admin/create-stories",
+    editLink: "/admin/create-stories", // Thêm link edit
   },
   listening: {
-    title: "Listening Posts",
+    title: "Shore stories",
     Icon: FaFileAudio,
     colorClasses: {
       bg: "bg-green-100",
       text: "text-green-600",
     },
-    createLink: "/admin/create-post",
-    editLink: "/admin/create-post", // Thêm link edit
+    createLink: "/admin/create-stories",
+    editLink: "/admin/create-stories", // Thêm link edit
   },
 };
 
@@ -66,11 +66,11 @@ export default function PostListPage() {
   const deletePostMutation = useMutation({
     mutationFn: (id: number) => api.deletePost(id),
     onSuccess: () => {
-      toast({ title: "Success", description: "Post deleted successfully" });
+      toast({ title: "Success", description: "Story deleted successfully" });
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
     onError: () => {
-      toast({ title: "Error", description: "Failed to delete post", variant: "destructive" });
+      toast({ title: "Error", description: "Failed to delete story", variant: "destructive" });
     },
   });
 
@@ -100,7 +100,7 @@ export default function PostListPage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">All Posts</h2>
-            <p className="text-gray-600 mt-1">Manage and organize your posts</p>
+            <p className="text-gray-600 mt-1">Manage and organize your stories</p>
           </div>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
             <div className="flex items-center space-x-2 p-1 bg-gray-100 rounded-lg">
@@ -118,7 +118,7 @@ export default function PostListPage() {
             <div className="w-full sm:w-64">
               <Input
                 type="text"
-                placeholder="Search by post title..."
+                placeholder="Search by stories title..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full"
@@ -151,10 +151,10 @@ export default function PostListPage() {
             ) : filteredPosts.length === 0 ? (
               <div className="text-center py-12">
                 <config.Icon className={`mx-auto text-6xl text-gray-400 mb-4`} />
-                <h3 className="text-xl font-medium text-gray-900 mb-2">No {selectedType} posts found</h3>
-                <p className="text-gray-600 mb-6">Create your first {selectedType} post to get started</p>
+                <h3 className="text-xl font-medium text-gray-900 mb-2">No {selectedType} stories found</h3>
+                <p className="text-gray-600 mb-6">Create your first {selectedType} stories to get started</p>
                 <Link href={config.createLink}>
-                  <Button><i className="fas fa-plus mr-2"></i>Create Post</Button>
+                  <Button><i className="fas fa-plus mr-2"></i>Create Stories</Button>
                 </Link>
               </div>
             ) : (
@@ -182,7 +182,7 @@ export default function PostListPage() {
                             <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50"><i className="fas fa-trash mr-2"></i>Delete</Button>
                           </AlertDialogTrigger>
                           <AlertDialogContent>
-                            <AlertDialogHeader><AlertDialogTitle>Are you sure?</AlertDialogTitle><AlertDialogDescription>This will permanently delete the post "{post.title}".</AlertDialogDescription></AlertDialogHeader>
+                            <AlertDialogHeader><AlertDialogTitle>Are you sure?</AlertDialogTitle><AlertDialogDescription>This will permanently delete the story "{post.title}".</AlertDialogDescription></AlertDialogHeader>
                             <AlertDialogFooter>
                               <AlertDialogCancel>Cancel</AlertDialogCancel>
                               <AlertDialogAction onClick={() => handleDeletePost(post.id)} className="bg-red-600 hover:bg-red-700">Continue</AlertDialogAction>

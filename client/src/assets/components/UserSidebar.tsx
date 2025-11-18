@@ -30,7 +30,7 @@ const userMenuItems = [
   { label: "Listening Tests", href: "/practice/listening", icon: Headphones },
   { label: "Speaking Tests", href: "/practice/speaking", icon: Mic },
   { label: "Writing Tests", href: "/practice/writing", icon: Pencil },
-  { label: "Students’ Reports", href: "/practice/reports", icon: Megaphone },
+  { label: "Short stories", href: "/practice/reports", icon: Megaphone },
 ];
 
 const adminMenuItems = [
@@ -40,7 +40,7 @@ const adminMenuItems = [
   { href: "/admin/create-listening-test", label: "Create Listening", icon: Headphones },
   { href: "/admin/create-writing-test", label: "Create Writing", icon: FilePlus },
   { href: "/admin/create-speaking-test", label: "Create Speaking", icon: Mic },
-  { href: "/admin/create-post", label: "Create Post", icon: FilePenLine },
+  { href: "/admin/create-stories", label: "Create Story", icon: FilePenLine },
   { href: "/admin/posts", label: "All Posts", icon: FileStack },
   { href: "/admin/users", label: "User Management", icon: Users },
   { href: "/admin/feedback", label: "User Feedback", icon: MessageSquare  },
